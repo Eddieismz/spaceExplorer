@@ -60,12 +60,12 @@
           </router-link>
 
           <div class="md:px-12 pt-8 md:pt-0">
-            <h3 class="text-white font-semibold text-lg tracking-wide mb-2">Mars Rover Cameras</h3>
+            <h3 class="text-white font-semibold text-lg tracking-wide mb-2  hover:text-teal-600">Mars Rover Cameras</h3>
             <p class="text-slate-500 text-sm leading-relaxed font-light">Real-time images sent directly from the surface of mars.</p>
           </div>
 
           <div class="md:pl-12 pt-8 md:pt-0">
-            <h3 class="text-white font-semibold text-lg tracking-wide mb-2">Near Earth Objects</h3>
+            <h3 class="text-white font-semibold text-lg tracking-wide mb-2 hover:text-teal-600">Near Earth Objects</h3>
             <p class="text-slate-500 text-sm leading-relaxed font-light">Track asteroids and orbital bodies passing safely through our solar system.</p>
           </div>
 
