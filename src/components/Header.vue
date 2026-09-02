@@ -1,3 +1,5 @@
+<script setup lang="ts">
+</script>
 <template>
   <header class="sticky top-0 z-50 w-full bg-navy/80 backdrop-blur-md border-b border-gray-200 shadow-sm transition-all duration-300">
     <nav
@@ -18,6 +20,13 @@
             active-class="text-teal-600 font-semibold"
           >
             Photo of the Day
+          </router-link>
+          <router-link
+            to="/gallery"
+            class="text-white-600 hover:text-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600 rounded px-2 py-1"
+            active-class="text-teal-600 font-semibold"
+          >
+            Gallery
           </router-link>
         </li>
 
