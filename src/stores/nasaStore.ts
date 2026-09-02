@@ -16,7 +16,7 @@ export const useNasaStore = defineStore('nasa', {
 
       //make http request to nasa's servers
       try {
-        const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=fKftoChO6gHdlfb39OSG3Xn81S5d3NL5wPY0gk3i');
+        const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=fKftoChO6gHdlfb39OSG3Xn81S5d3NL5wPY0gk3i&thumbs=true');
 
         if (!response.ok) {
           //know the exact error that the api call resulted in
@@ -40,7 +40,7 @@ export const useNasaStore = defineStore('nasa', {
 
       try {
         const response = await fetch(
-          `https://api.nasa.gov/planetary/apod?api_key=fKftoChO6gHdlfb39OSG3Xn81S5d3NL5wPY0gk3i&start_date=${startDate}&end_date=${endDate}`
+          `https://api.nasa.gov/planetary/apod?api_key=fKftoChO6gHdlfb39OSG3Xn81S5d3NL5wPY0gk3i&start_date=${startDate}&end_date=${endDate}&thumbs=true`
         )
 
         if (!response.ok) {
@@ -66,7 +66,7 @@ export const useNasaStore = defineStore('nasa', {
 
       try {
         const response = await fetch(
-          `https://api.nasa.gov/planetary/apod?api_key=fKftoChO6gHdlfb39OSG3Xn81S5d3NL5wPY0gk3i&date=${date}`
+          `https://api.nasa.gov/planetary/apod?api_key=fKftoChO6gHdlfb39OSG3Xn81S5d3NL5wPY0gk3i&date=${date}&thumbs=true`
         )
         if (!response.ok) {
           throw new Error(`Failed to fetch data. Status: ${response.status}`)
