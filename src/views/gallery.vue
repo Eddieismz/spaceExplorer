@@ -65,29 +65,45 @@
         :key="photo.date"
         class="bg-slate-800 rounded-xl shadow-2xl overflow-hidden border border-slate-700 flex flex-col"
       >
-        <img
-          v-if="photo.media_type === 'image'"
-          :src="photo.url"
-          :alt="photo.title"
-          class="w-full h-[220px] object-cover"
-        />
-        <div v-else class="w-full h-[220px] bg-slate-700 flex items-center justify-center text-slate-400">
-          Video content
-        </div>
-
-        <div class="p-5 flex flex-col flex-1">
-          <h2 class="text-lg font-semibold mb-1">{{ photo.title }}</h2>
-          <p class="text-slate-400 text-xs mb-3">{{ photo.date }}</p>
-          <p class="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-3">
-            {{ photo.explanation }}
-          </p>
-
-          <RouterLink
-            :to="{ name: 'apod-detail', params: { date: photo.date } }"
-            class="mt-auto text-teal-500 hover:text-teal-400 text-sm font-semibold self-start"
+        <div class="relative">
+          <img
+            v-if="photo.media_type === 'image'"
+            :src="photo.url"
+            :alt="photo.title"
+            class="w-full h-[220px] object-cover"
+          />
+          <img
+            v-else-if="photo.media_type === 'video' && photo.thumbnail_url"
+            :src="photo.thumbnail_url"
+            :alt="photo.title"
+            class="w-full h-[220px] object-cover"
           >
-            Read more &rarr;
-          </RouterLink>
+          <div
+            v-else class = "w-full h-[220px] bg-slate-700 flex items-center justify-center text-slate-400">
+            Video Content
+          </div>
+
+          <span
+            v-if="photo.media_type === 'video'"
+            class="absolute top-2 right-2 bg-teal-800 text-xs font-semibold text-white px-2 py-1 rounded-md flex items-center gap-1"
+            >
+            Video
+          </span>
+
+          <div class="p-5 flex flex-col flex-1">
+            <h2 class="text-lg font-semibold mb-1">{{ photo.title }}</h2>
+            <p class="text-slate-400 text-xs mb-3">{{ photo.date }}</p>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4 line-clamp-3">
+              {{ photo.explanation }}
+            </p>
+
+            <RouterLink
+              :to="{ name: 'apod-detail', params: { date: photo.date } }"
+              class="mt-auto text-teal-500 hover:text-teal-400 text-sm font-semibold self-start"
+            >
+              Read more &rarr;
+            </RouterLink>
+          </div>
         </div>
       </div>
     </div>
