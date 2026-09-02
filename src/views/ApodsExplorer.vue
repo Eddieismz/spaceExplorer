@@ -25,24 +25,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import { mapState, mapActions } from 'pinia' //helper functions (maps pinia to vue options api)
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useNasaStore } from '@/stores/nasaStore'
 
+// Get the store instance
+const nasaStore = useNasaStore()
 
-//refactor as composition with script setup
+// Destructure reactive state with storeToRefs (preserves reactivity)
+const { astronomyData, isLoading, error } = storeToRefs(nasaStore)
 
-export default defineComponent({
-  name: 'App',
-  computed: { // use computed so, when changes happend vue instantly updates, the HTML file
-    ...mapState(useNasaStore, ['astronomyData', 'isLoading', 'error'])
-  },
-  methods: {
-    ...mapActions(useNasaStore, ['fetchApodData'])
-  },
-  mounted() {
-    this.fetchApodData(); // Fetch when the app loads
-  }
+// Actions can be destructured directly (functions don't need storeToRefs)
+const { fetchApodData } = nasaStore
+
+// Fetch when the app loads
+onMounted(() => {
+  fetchApodData()
 })
 </script>
