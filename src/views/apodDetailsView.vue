@@ -20,17 +20,37 @@
         v-else-if="selectedPhoto"
         class="bg-slate-800 rounded-xl shadow-2xl overflow-hidden border border-slate-700"
       >
-        <img
-          v-if="selectedPhoto.media_type === 'image'"
-          :src="selectedPhoto.hdurl || selectedPhoto.url"
-          :alt="selectedPhoto.title"
-          class="w-full max-h-[600px] object-cover"
+        <video
+          v-if="selectedPhoto.media_type === 'video' && selectedPhoto.url.endsWith('.mp4')"
+          :src="selectedPhoto.url"
+          controls
+          class="w-full max-h-[600px]"
         />
         <iframe
-          v-else
+          v-else-if="selectedPhoto.media_type === 'video' && (selectedPhoto.url.includes('youtube.com') || selectedPhoto.url.includes('vimeo.com'))"
           :src="selectedPhoto.url"
           class="w-full h-[400px]"
           allowfullscreen
+        />
+        <div
+          v-else-if="selectedPhoto.media_type === 'video'"
+          class="p-8 text-center"
+        >
+          <p class="text-slate-400 mb-4">This video can't be embedded directly.</p>
+          <a
+            :href="selectedPhoto.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-teal-500 hover:text-teal-400 font-semibold"
+          >
+            Watch on NASA's site &rarr;
+          </a>
+        </div>
+        <img
+          v-else
+          :src="selectedPhoto.hdurl || selectedPhoto.url"
+          :alt="selectedPhoto.title"
+          class="w-full max-h-[600px] object-cover"
         />
 
         <div class="p-8">
