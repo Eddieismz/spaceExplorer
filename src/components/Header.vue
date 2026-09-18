@@ -28,8 +28,14 @@
           >
             Gallery
           </router-link>
+          <router-link
+            to="/mars-rover"
+            class="text-white-600 hover:text-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600 rounded px-2 py-1"
+            active-class="text-teal-600 font-semibold"
+          >
+            Mars Rover
+          </router-link>
         </li>
-
       </ul>
     </nav>
   </header>
